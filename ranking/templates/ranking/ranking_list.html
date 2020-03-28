@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Lista wpisów w rankingu</h1>
+    <h1 class="w3-text-teal">Ranking</h1>
 <div class="ranking">
-
-    {% for osoba in ranking %}
-
-    <div class="osoba">
-        <h2><a href="#">{{ osoba.name }}</a> </h2>
-        <p>{{ osoba.body }}</p>
-        <p>{{ osoba.date }}</p>
-    </div>
+ {% for osoba in ranking %}
+     <div class="osoba">
+            {{ osoba.name }}
+            {{ osoba.body }}
+            {{ osoba.date }}
+     </div>
     {% endfor %}
-
 </div>
 {% endblock %}
