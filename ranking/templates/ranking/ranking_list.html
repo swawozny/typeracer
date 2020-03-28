@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lista wpisów w rankingu</h1>
+<div class="ranking">
+
+    {% for osoba in ranking %}
+
+    <div class="osoba">
+        <h2><a href="#">{{ osoba.name }}</a> </h2>
+        <p>{{ osoba.body }}</p>
+        <p>{{ osoba.date }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
