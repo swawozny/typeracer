@@ -36,6 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ranking',
+    'register',
+    'about',
+    'news',
+    'chatbox',
+    'typer',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -113,8 +119,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/styles/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'styles'),
 )
+
+VENV_PATH = os.path.dirname(BASE_DIR)
+
+STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+LOGIN_REDIRECT_URL = 'login'

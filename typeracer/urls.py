@@ -13,15 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from django.conf.urls.static import static
+from . import views, settings
+from django.contrib.auth import views as auth_views
+from register import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('ranking/', include('ranking.urls')),
-    path('ranking/', views.ranking),
-    path('typeracer/', views.typeracer),
-    path('rejestracja/', views.rejestracja),
+    path('rejestracja/', include('register.urls')),
+    path('profile/', user_views.profile, name='profile'),
+    path('onas/', include('about.urls')),
+    path('aktualnosci/', include('news.urls')),
+    path('chatbox/', include('chatbox.urls')),
+    path('typeracer/', include('typer.urls')),
+    path('logowanie/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
+    path('wylogowanie/', auth_views.LogoutView.as_view(template_name='register/logout.html'), name='logout'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

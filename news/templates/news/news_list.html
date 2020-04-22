@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Aktualności </h1>
+    {% if user.is_authenticated %}
+    <button><a href="/aktualnosci/create">Dodaj post</a></button>
+    {% endif %}
+    {%  for post in all_posts %}
+        <article class="media content-section">
+        <div class="w3-row">
+    <div class="media-body">
+      <h1 class="article-title"><a href="{{  post.get_absolute_url }}">{{ post.title }}</a></h1>
+        <small>Napisane przez {{ post.author }}<a href="{{ post.get_update_url }}"></a> dnia  {{ post.date }}</small>
+
+      <p>{{ post.cut_text }}</p>
+    </div>
+    <div class="media-body">
+
+      <p><img src="{{ post.image.url }}" style="width:100%" alt="Nature"></p>
+    </div>
+  </div>
+        </article>
+
+    {% endfor %}
+{% endblock %}
