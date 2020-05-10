@@ -82,3 +82,87 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+ .container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color: black;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+  }
+
+.timer, .errors, .accuracy,
+  .cpm, .wpm {
+    background-color: #356a8a;
+    height: 70px;
+    width: 100px;
+    margin: 18px;
+    padding: 12px;
+
+    box-shadow: whitesmoke 1px 1px 1px;
+  }
+
+  .cpm, .wpm  {
+    display: none;
+  }
+
+  .header_text {
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .curr_time, .curr_errors,
+  .curr_accuracy, .curr_cpm,
+  .curr_wpm {
+    font-size: 1.75rem;
+    color: #d5e6ff;
+  }
+
+  .quote {
+background: #ffffff;
+    font-size: 150%;
+    padding: 30px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  .input_area {
+    height: 80px;
+    width: 95%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 15px;
+    padding: 20px;
+    color: black;
+    background-color: #eef1f1;
+    border-color: black;
+  }
+
+  .restart_btn {
+    display: none;
+    background-color: #58b6ff;
+    font-size: 100%;
+    border-color: black;
+    padding: 10px;
+  }
+
+  .incorrect_char {
+    color: red;
+    text-decoration: underline;
+  }
+
+  .correct_char {
+    color: darkgreen;
+  }

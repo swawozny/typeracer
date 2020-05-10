@@ -1,6 +1,11 @@
+from django.conf.urls import url
 from django.urls import path, include
 from . import views
+from chatbox.views import JoinFormView
 
 urlpatterns = [
-    path('', views.chatbox_list),
+
+    url('', JoinFormView.as_view()),
+
 ]
+
