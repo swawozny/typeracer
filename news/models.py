@@ -3,6 +3,7 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 
+
 class Post(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField()
@@ -25,6 +26,7 @@ class Post(models.Model):
 
     def cut_text(self):
         return self.description[:670] + '...'
+
 
 class Author(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)

@@ -166,3 +166,24 @@ background: #ffffff;
   .correct_char {
     color: darkgreen;
   }
+
+  .tablinks {
+    background-color: #fafafa;
+    border: none;
+    color: black;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .tabcontent {
+    display: none;
+  }
+
+  #title {
+    margin-top: 12px;
+  }

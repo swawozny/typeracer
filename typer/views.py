@@ -1,16 +1,9 @@
-import json
-from datetime import datetime
-
-import simplejson as simplejson
-from django.contrib.auth.decorators import login_required
-from django.contrib.postgres import serializers
-from django.http import JsonResponse, HttpResponse, request, response
-from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.shortcuts import render
 
-from .forms import MessageForm
 from .models import Game
-from django.views.decorators.http import require_POST
 
 
 def typer_list(request):
