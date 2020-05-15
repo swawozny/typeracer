@@ -86,7 +86,7 @@
                             <td>{{ user_words.user }}</td>
                             <td>{{ user_words.words }}</td>
                             <td>{{ user_words.avg_cpm }}</td>
-                            <td>{{ user_words.races}}</td>
+                            <td>{{ user_words.races }}</td>
                         </tr>
                     {% endfor %}
                   </tbody>
@@ -115,7 +115,7 @@
                             <td>{{ user_avg_cpm.user }}</td>
                             <td>{{ user_avg_cpm.words }}</td>
                             <td>{{ user_avg_cpm.avg_cpm }}</td>
-                            <td>{{ user_avg_cpm.races}}</td>
+                            <td>{{ user_avg_cpm.races }}</td>
                         </tr>
                     {% endfor %}
                   </tbody>
@@ -143,7 +143,7 @@
                             <td>{{ user_race.user }}</td>
                             <td>{{ user_race.words }}</td>
                             <td>{{ user_race.avg_cpm }}</td>
-                            <td>{{ user_race.races}}</td>
+                            <td>{{ user_race.races }}</td>
                         </tr>
                     {% endfor %}
                </tbody>
@@ -153,26 +153,21 @@
 
     <script>
         function openTab(evt, rankingNames, title, tabId) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
               tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
             tablinks[i].style.backgroundColor = "#fafafa";
-          }
-
-              document.getElementById(rankingNames).style.display = "block";
-
-
-          document.getElementById('title').innerText = title;
-          document.getElementById(tabId).style.backgroundColor = "#e7e7e7";
-          evt.currentTarget.className += " active";
+            }
+            document.getElementById(rankingNames).style.display = "block";
+            document.getElementById('title').innerText = title;
+            document.getElementById(tabId).style.backgroundColor = "#e7e7e7";
+            evt.currentTarget.className += " active";
         }
-
-
     </script>
 
 {% endblock %}

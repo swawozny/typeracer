@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('ranking/', include('ranking.urls')),
+    path('achievements/', include('achievements.urls')),
     path('rejestracja/', include('register.urls')),
     path('profile/', user_views.profile, name='profile'),
     path('onas/', include('about.urls')),

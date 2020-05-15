@@ -1,7 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
-from django.db.models import Avg
+from django.db import models
 
 from typer.models import Game
 
@@ -37,7 +35,7 @@ def update_user(request, wpm, cpm, errors):
     else:
         new_avg_accuracy = None
 
-    Profile.objects.select_related().update(words2=new_words, characters=new_characters,
+    Profile.objects.select_related().update(words=new_words, characters=new_characters,
                                             errors=new_errors,
                                             races=new_races, avg_cpm=new_cpm, avg_wpm=new_wpm,
                                             avg_accuracy=new_avg_accuracy)

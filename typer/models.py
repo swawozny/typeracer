@@ -23,6 +23,7 @@ class Game(models.Model):
     def getLastGame(request):
         return Game.objects.all().filter(user=request.user).order_by('-date')[0]
 
+
 def save(self, *args, **kwargs):
     if self.score < 0:
         self.score = 0
