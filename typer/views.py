@@ -11,7 +11,7 @@ from django.contrib import messages
 from .forms import MessageForm
 from .models import Game
 from django.views.decorators.http import require_POST
-
+from register import models
 
 def typer_list(request):
     messages.info(request, 'Tutaj możesz zagrać w grę ONLINE')
@@ -27,5 +27,6 @@ def end_game(request):
             cpm=request.POST.get('cpm'),
             errors=request.POST.get('errors'),
         )
+        models.update_user(request, request.POST.get('wpm'), request.POST.get('cpm'), request.POST.get('errors'))
         game.save()
         return JsonResponse({'status': True})
