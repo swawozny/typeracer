@@ -23,19 +23,21 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
+
 def update_user(request, wpm, cpm, errors):
-    profile = Profile.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
     new_words = profile.words + int(wpm)
     new_characters = profile.characters + int(cpm)
     new_errors = profile.errors + int(errors)
     new_races = profile.races + 1
-    new_cpm = new_characters/new_races
-    new_wpm = new_words/new_races
-    new_avg_accuracy = new_errors/new_characters
+    new_cpm = new_characters / new_races
+    new_wpm = new_words / new_races
+    if new_characters != 0:
+        new_avg_accuracy = new_errors / new_characters
+    else:
+        new_avg_accuracy = None
 
-    Profile.objects.select_related().update(words = new_words, characters = new_characters, errors = new_errors,
-                                            races = new_races, avg_cpm = new_cpm, avg_wpm = new_wpm,
-                                            avg_accuracy = new_avg_accuracy)
-
-
-
+    Profile.objects.select_related().update(words2=new_words, characters=new_characters,
+                                            errors=new_errors,
+                                            races=new_races, avg_cpm=new_cpm, avg_wpm=new_wpm,
+                                            avg_accuracy=new_avg_accuracy)
