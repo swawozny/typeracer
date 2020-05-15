@@ -5,11 +5,7 @@
     <div class="tab">
         <button class="tablinks" id="first" onclick="openTab(event, 'latestscore', 'Latest High Scores', 'first')">Latest High Scores</button>
         <button class="tablinks" id="second" onclick="openTab(event, 'myscore', 'My Scores', 'second')">My Scores</button>
-<<<<<<< HEAD
         <button class="tablinks" id="third" onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Hall of Fame</button>
-=======
-        <button class="tablinks" id="third" onclick="openTab(event, 'halloffame', 'Hall of Fame', 'third')">Hall of Fame</button>
->>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
         <h3 id="title" style="float: right"></h3>
     </div>
 
@@ -53,11 +49,7 @@
                           <th>date</th>
                         </tr>
                     </thead>
-<<<<<<< HEAD
                     <tbody >
-=======
-                    <tbody>
->>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
                         {% for my_game in my_games %}
                             <tr>
                                 <td>{{ my_game.wpm }}</td>
@@ -72,7 +64,6 @@
         {% endif %}
     </div>
 
-<<<<<<< HEAD
 
     <div id="halloffame1" class="tabcontent" style="{display: none}">
         <div class="panel panel-default">
@@ -166,41 +157,22 @@
           tabcontent = document.getElementsByClassName("tabcontent");
           for (i = 0; i < tabcontent.length; i++) {
               tabcontent[i].style.display = "none";
-=======
-    <div id="halloffame" class="tabcontent">
-        <p>There will be a table</p>
-    </div>
-
-    <script>
-        function openTab(evt, rankingName, title, tabId) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
->>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
           }
           tablinks = document.getElementsByClassName("tablinks");
           for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
             tablinks[i].style.backgroundColor = "#fafafa";
           }
-<<<<<<< HEAD
 
               document.getElementById(rankingNames).style.display = "block";
 
 
-=======
-          document.getElementById(rankingName).style.display = "block";
->>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
           document.getElementById('title').innerText = title;
           document.getElementById(tabId).style.backgroundColor = "#e7e7e7";
           evt.currentTarget.className += " active";
         }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
     </script>
 
 {% endblock %}
