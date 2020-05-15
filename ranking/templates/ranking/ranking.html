@@ -3,27 +3,32 @@
     <h1 class="w3-text-teal">Ranking</h1>
 
     <div class="tab">
-        <button class="tablinks" id="first" onclick="openTab(event, 'latestscore', 'Latest High Scores', 'first')">Latest High Scores</button>
-        <button class="tablinks" id="second" onclick="openTab(event, 'myscore', 'My Scores', 'second')">My Scores</button>
-        <button class="tablinks" id="third" onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Hall of Fame</button>
-        <h3 id="title" style="float: right"></h3>
+        <button class="tablinks" id="first"
+                onclick="openTab(event, 'latestscore1', 'Latest High Scores', 'first')"
+                style="background-color: #e7e7e7;">Latest High Scores</button>
+        <button class="tablinks" id="second"
+                onclick="openTab(event, 'myscore1', 'My Scores', 'second')">My Scores</button>
+        <button class="tablinks" id="third"
+                onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Hall of Fame</button>
+        <h3 id="title" style="float: right">Latest High Scores</h3>
     </div>
 
     <!-- Tab content -->
-    <div id="latestscore" class="tabcontent">
+    <div id="latestscore1" class="tabcontent" style="display: block">
         <div class="panel panel-default">
             <table class="table table-striped table-hover">
                   <thead>
                     <tr>
-                      <th>name</th>
-                      <th>wpm</th>
-                      <th>cpm</th>
-                      <th>errors</th>
-                      <th>date</th>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore2', 'Latest High Scores', 'first')">hour</button></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {% for game in games %}
+                    {% for game in hours %}
                         <tr>
                             <td>{{ game.user }}</td>
                             <td>{{ game.wpm }}</td>
@@ -37,20 +42,164 @@
         </div>
     </div>
 
-    <div id="myscore" class="tabcontent">
+    <div id="latestscore2" class="tabcontent">
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore3', 'Latest High Scores', 'first')">day</button></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for game in days %}
+                        <tr>
+                            <td>{{ game.user }}</td>
+                            <td>{{ game.wpm }}</td>
+                            <td>{{ game.cpm }}</td>
+                            <td>{{ game.errors }}</td>
+                            <td>{{ game.date }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="latestscore3" class="tabcontent">
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore4', 'Latest High Scores', 'first')">week</button></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for game in weeks %}
+                        <tr>
+                            <td>{{ game.user }}</td>
+                            <td>{{ game.wpm }}</td>
+                            <td>{{ game.cpm }}</td>
+                            <td>{{ game.errors }}</td>
+                            <td>{{ game.date }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="latestscore4" class="tabcontent">
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore5', 'Latest High Scores', 'first')">month</button></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for game in months %}
+                        <tr>
+                            <td>{{ game.user }}</td>
+                            <td>{{ game.wpm }}</td>
+                            <td>{{ game.cpm }}</td>
+                            <td>{{ game.errors }}</td>
+                            <td>{{ game.date }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="latestscore5" class="tabcontent">
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore6', 'Latest High Scores', 'first')">year</button></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for game in years %}
+                        <tr>
+                            <td>{{ game.user }}</td>
+                            <td>{{ game.wpm }}</td>
+                            <td>{{ game.cpm }}</td>
+                            <td>{{ game.errors }}</td>
+                            <td>{{ game.date }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="latestscore6" class="tabcontent">
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>wpm</th>
+                        <th>cpm</th>
+                        <th>errors</th>
+                        <th><button type="button" class="btn btn-primary"
+                            onclick="openTab(event, 'latestscore1', 'Latest High Scores', 'first')">all time</button></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for game in forever %}
+                        <tr>
+                            <td>{{ game.user }}</td>
+                            <td>{{ game.wpm }}</td>
+                            <td>{{ game.cpm }}</td>
+                            <td>{{ game.errors }}</td>
+                            <td>{{ game.date }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="myscore1" class="tabcontent">
         {% if user.is_authenticated %}
             <div class="panel panel-default">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                          <th>wpm</th>
-                          <th>cpm</th>
-                          <th>errors</th>
-                          <th>date</th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore1', 'My Scores', 'second')">wpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore2', 'My Scores', 'second')">cpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore3', 'My Scores', 'second')">errors</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore4', 'My Scores', 'second')">date</button></th>
                         </tr>
                     </thead>
                     <tbody >
-                        {% for my_game in my_games %}
+                        {% for my_game in my_wpm %}
                             <tr>
                                 <td>{{ my_game.wpm }}</td>
                                 <td>{{ my_game.cpm }}</td>
@@ -64,18 +213,110 @@
         {% endif %}
     </div>
 
+    <div id="myscore2" class="tabcontent">
+        {% if user.is_authenticated %}
+            <div class="panel panel-default">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore1', 'My Scores', 'second')">wpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore2', 'My Scores', 'second')">cpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore3', 'My Scores', 'second')">errors</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore4', 'My Scores', 'second')">date</button></th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for my_game in my_cpm %}
+                            <tr>
+                                <td>{{ my_game.wpm }}</td>
+                                <td>{{ my_game.cpm }}</td>
+                                <td>{{ my_game.errors }}</td>
+                                <td>{{ my_game.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
 
-    <div id="halloffame1" class="tabcontent" style="{display: none}">
+    <div id="myscore3" class="tabcontent">
+        {% if user.is_authenticated %}
+            <div class="panel panel-default">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore1', 'My Scores', 'second')">wpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore2', 'My Scores', 'second')">cpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore3', 'My Scores', 'second')">errors</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore4', 'My Scores', 'second')">date</button></th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for my_game in my_error %}
+                            <tr>
+                                <td>{{ my_game.wpm }}</td>
+                                <td>{{ my_game.cpm }}</td>
+                                <td>{{ my_game.errors }}</td>
+                                <td>{{ my_game.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+    <div id="myscore4" class="tabcontent">
+        {% if user.is_authenticated %}
+            <div class="panel panel-default">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore1', 'My Scores', 'second')">wpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore2', 'My Scores', 'second')">cpm</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore3', 'My Scores', 'second')">errors</button></th>
+                            <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'myscore4', 'My Scores', 'second')">date</button></th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for my_game in my_date %}
+                            <tr>
+                                <td>{{ my_game.wpm }}</td>
+                                <td>{{ my_game.cpm }}</td>
+                                <td>{{ my_game.errors }}</td>
+                                <td>{{ my_game.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+    <div id="halloffame1" class="tabcontent">
         <div class="panel panel-default">
             <table class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th>name</th>
-                      <th><button type="button" class="btn btn-primary" id="words"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
-                      <th><button type="button" class="btn btn-primary" id="avgcpm"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
-                      <th><button type="button" class="btn btn-primary" id="races"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
                     </tr>
                   </thead>
@@ -93,17 +334,18 @@
             </table>
         </div>
     </div>
+
     <div id="halloffame2" class="tabcontent" >
         <div class="panel panel-default">
             <table class="table table-striped table-hover">
                   <thead>
                   <tr>
                       <th>name</th>
-                      <th><button type="button" class="btn btn-primary" id="words"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
-                      <th><button type="button" class="btn btn-primary" id="avgcpm"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
-                      <th><button type="button" class="btn btn-primary" id="races"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
                     </tr>
                   </thead>
@@ -129,11 +371,11 @@
                   <thead>
                    <tr>
                       <th>name</th>
-                      <th><button type="button" class="btn btn-primary" id="words"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
-                      <th><button type="button" class="btn btn-primary" id="avgcpm"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
-                      <th><button type="button" class="btn btn-primary" id="races"
+                      <th><button type="button" class="btn btn-primary"
                                   onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
                     </tr>
                   </thead>
@@ -156,12 +398,12 @@
             let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
+                tabcontent[i].style.display = "none";
             }
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-            tablinks[i].style.backgroundColor = "#fafafa";
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].style.backgroundColor = "#fafafa";
             }
             document.getElementById(rankingNames).style.display = "block";
             document.getElementById('title').innerText = title;
