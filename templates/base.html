@@ -66,9 +66,18 @@
               <p class='text-muted'>Opcje profilowe</p>
               <ul class="list-group">
               <li class="list-group-item list-group-item-light"><a href="/profile">Edytuj profil</a></li>
-                <li class="list-group-item list-group-item-light"> Najlepszy wynik: </li>
-                <li class="list-group-item list-group-item-light">napewno</li>
-                <li class="list-group-item list-group-item-light">bedzie</li>
+                  <li class="list-group-item list-group-item-light"> <strong>Średni WPM:</strong> {{wpm}} </li>
+                  <li class="list-group-item list-group-item-light"><strong>Średni CPM:</strong> {{cpm}}</li>
+                  <li class="list-group-item list-group-item-light"><p><strong>Ostatni wynik:</strong></p>
+                      <p>
+                      <mark>WPM:</mark> {{ lastgame.wpm }}
+                     <mark>CPM:</mark> {{ lastgame.cpm }}
+                      <mark>Errors:</mark> {{ lastgame.errors }}
+                          </p>
+                      <mark>Data:</mark> {{ lastgame.date }}
+
+
+                            </tr> </li>
               </ul>
             </p>
           </div>

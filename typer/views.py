@@ -1,17 +1,15 @@
-import json
-from datetime import datetime
-
-import simplejson as simplejson
-from django.contrib.auth.decorators import login_required
-from django.contrib.postgres import serializers
-from django.http import JsonResponse, HttpResponse, request, response
-from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.shortcuts import render
 
-from .forms import MessageForm
 from .models import Game
+<<<<<<< HEAD
 from django.views.decorators.http import require_POST
 from register import models
+=======
+
+>>>>>>> b5fa17fbb147970224d48f7374d79eb0d977ba20
 
 def typer_list(request):
     messages.info(request, 'Tutaj możesz zagrać w grę ONLINE')
