@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.db.models import Avg
+
+from typer.models import Game
 
 
 class Profile(models.Model):

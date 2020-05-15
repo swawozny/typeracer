@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models import Avg
 from django.shortcuts import render
 from datetime import datetime
 from datetime import timedelta
