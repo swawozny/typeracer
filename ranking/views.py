@@ -12,12 +12,13 @@ from typer.models import Game
 # Create your views here.
 def ranking_list(request):
     hours, days, weeks, months, years, forever = get_games()
-    users_words, users_avg_cpm, users_race = get_users_games()
+    users_words, users_avg_cpm, users_race, users_avg_wpm = get_users_games()
     my_wpm, my_cpm, my_error, my_date = get_my_games(request)
     return render(request, 'ranking/ranking_list.html', {
         'hours': hours, 'days': days, 'weeks': weeks, 'months': months, 'years': years, 'forever': forever,
         'my_wpm': my_wpm, 'my_cpm': my_cpm, 'my_error': my_error, 'my_date': my_date,
-        'users_words': users_words, 'users_avg_cpm': users_avg_cpm, 'users_race': users_race
+        'users_words': users_words, 'users_avg_cpm': users_avg_cpm, 'users_race': users_race,
+        'users_avg_wpm': users_avg_wpm
     })
 
 
@@ -61,8 +62,11 @@ def date_diff_in_days(games):
 def get_users_games():
     users_words = Profile.objects.all().order_by('-words')[:20]
     users_avg_cpm = Profile.objects.all().order_by('-avg_cpm')[:20]
+    users_avg_wpm = Profile.objects.all().order_by('-avg_wpm')[:20]
     users_race = Profile.objects.all().order_by('-races')[:20]
-    return users_words, users_avg_cpm, users_race
+    return users_words, users_avg_cpm, users_race, users_avg_wpm
+
+
 
 
 def get_my_games(request):

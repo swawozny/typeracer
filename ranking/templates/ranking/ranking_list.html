@@ -313,11 +313,13 @@
                     <tr>
                       <th>name</th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
+                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Punkty</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
+                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">Średni cpm</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
+                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">Średni wpm</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame4', 'Hall of Fame', 'third')">Wyścigi</button></th>
                     </tr>
                   </thead>
 
@@ -327,6 +329,7 @@
                             <td>{{ user_words.user }}</td>
                             <td>{{ user_words.words }}</td>
                             <td>{{ user_words.avg_cpm }}</td>
+                            <td>{{ user_words.avg_wpm }}</td>
                             <td>{{ user_words.races }}</td>
                         </tr>
                     {% endfor %}
@@ -342,11 +345,13 @@
                   <tr>
                       <th>name</th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
+                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Punkty</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
+                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">Średni cpm</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
+                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">Średni wpm</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame4', 'Hall of Fame', 'third')">Wyścigi</button></th>
                     </tr>
                   </thead>
 
@@ -357,6 +362,7 @@
                             <td>{{ user_avg_cpm.user }}</td>
                             <td>{{ user_avg_cpm.words }}</td>
                             <td>{{ user_avg_cpm.avg_cpm }}</td>
+                            <td>{{ user_avg_cpm.avg_wpm }}</td>
                             <td>{{ user_avg_cpm.races }}</td>
                         </tr>
                     {% endfor %}
@@ -365,18 +371,53 @@
         </div>
     </div>
 
-    <div id="halloffame3" class="tabcontent" style="{display: none}">
+        <div id="halloffame3" class="tabcontent" >
+        <div class="panel panel-default">
+            <table class="table table-striped table-hover">
+                  <thead>
+                  <tr>
+                      <th>name</th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Punkty</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">Średni cpm</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">Średni wpm</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame4', 'Hall of Fame', 'third')">Wyścigi</button></th>
+                    </tr>
+                  </thead>
+
+
+               <tbody >
+                    {% for user_avg_wpm  in users_avg_wpm %}
+                        <tr>
+                            <td>{{ user_avg_wpm.user }}</td>
+                            <td>{{ user_avg_wpm.words }}</td>
+                            <td>{{ user_avg_wpm.avg_cpm }}</td>
+                            <td>{{ user_avg_wpm.avg_wpm }}</td>
+                            <td>{{ user_avg_wpm.races }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="halloffame4" class="tabcontent" style="{display: none}">
         <div class="panel panel-default">
             <table class="table table-striped table-hover">
                   <thead>
                    <tr>
                       <th>name</th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">words</button></th>
+                                  onclick="openTab(event, 'halloffame1', 'Hall of Fame', 'third')">Punkty</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">avg cpm</button></th>
+                                  onclick="openTab(event, 'halloffame2', 'Hall of Fame', 'third')">Średni cpm</button></th>
                       <th><button type="button" class="btn btn-primary"
-                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">races</button></th>
+                                  onclick="openTab(event, 'halloffame3', 'Hall of Fame', 'third')">Średni wpm</button></th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'halloffame4', 'Hall of Fame', 'third')">Wyścigi</button></th>
                     </tr>
                   </thead>
                <tbody >
@@ -385,6 +426,7 @@
                             <td>{{ user_race.user }}</td>
                             <td>{{ user_race.words }}</td>
                             <td>{{ user_race.avg_cpm }}</td>
+                            <td>{{ user_race.avg_wpm }}</td>
                             <td>{{ user_race.races }}</td>
                         </tr>
                     {% endfor %}
