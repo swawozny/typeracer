@@ -10,11 +10,11 @@ from typer.models import Game
 
 
 # Create your views here.
-def ranking(request):
+def ranking_list(request):
     hours, days, weeks, months, years, forever = get_games()
     users_words, users_avg_cpm, users_race = get_users_games()
     my_wpm, my_cpm, my_error, my_date = get_my_games(request)
-    return render(request, 'ranking/ranking.html', {
+    return render(request, 'ranking/ranking_list.html', {
         'hours': hours, 'days': days, 'weeks': weeks, 'months': months, 'years': years, 'forever': forever,
         'my_wpm': my_wpm, 'my_cpm': my_cpm, 'my_error': my_error, 'my_date': my_date,
         'users_words': users_words, 'users_avg_cpm': users_avg_cpm, 'users_race': users_race
@@ -53,7 +53,7 @@ def date_diff_in_days(games):
     for game in games:
         time_seconds = (utc.localize(datetime.now()) - game.date).seconds
         game.date = str(time_seconds // 86400) + ' d ' \
-                    + str((time_seconds // 24) // 3600) + ' h ' \
+                    + str(time_seconds // 3600) + ' h ' \
                     + str((time_seconds // 60) % 60) + ' min ago'
     return games
 
