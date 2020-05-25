@@ -12,12 +12,12 @@
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Twoje dane</legend>
+              <legend class="border-bottom mb-4">Your data</legend>
               {{ u_form|crispy }}
               {{ p_form|crispy }}
           </fieldset>
           <div class="form-group">
-              <button class="btn btn-outline-info" type="submit">Akceptuj zmiany</button>
+              <button class="btn btn-outline-info" type="submit">Accept changes</button>
           </div>
       </form>
     </div>

@@ -1,0 +1,446 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-text-teal">Achievements</h1>
+     <div class="tab">
+        <button class="tablinks" id="first"
+                onclick="openTab(event, 'myachievements', 'My Achievements', 'first')"
+                style="background-color: #e7e7e7;">My Achievements</button>
+        <button class="tablinks" id="second"
+                onclick="openTab(event, 'allachievements1', 'All Achievements', 'second')">All Achievements</button>
+     <h3 id="title" style="float: right">My achievements</h3>
+
+    </div>
+    <div id="myachievements" class="tabcontent" style="display: block">
+    {% if user.is_authenticated %}
+
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+
+                <tbody >
+    <tr>
+
+      <th>Achievement Name</th>
+      <th>Current Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Typing level</td>
+      <td>{{ typing_lvl }}</td>
+      <td><img src="/media/ranks/{{ typing_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Score level</td>
+      <td>{{ score_lvl }}</td>
+      <td><img src="/media/ranks/{{ score_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Races number level</td>
+      <td>{{ races_lvl }}</td>
+      <td><img src="/media/ranks/{{ races_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+      <tr>
+      <td>Accuracy level</td>
+      <td>{{ accuracy_lvl }}</td>
+      <td><img src="/media/ranks/{{ accuracy_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+
+            <tr>
+      <td>Ranks number level</td>
+      <td>{{ summary_lvl }}</td>
+      <td><img src="/media/ranks/{{ summary_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+
+  </table>
+        </div>
+        </div>
+        </div>
+        {% endif %}
+
+
+
+        <div id="allachievements1" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements2', 'All Achievements', 'second')">Typing level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>You get it when you are newbie.</td>
+      <td>Beginner</td>
+      <td><img src="/media/ranks/Beginner.png" style="width:40%" /></td>
+    </tr>
+                <tr>
+        <td>You get it when your average wpm is equal to or greater than 25. </td>
+      <td>Intermediate</td>
+      <td><img src="/media/ranks/Intermediate.png" style="width:40%" /></td>
+    </tr>
+                <tr>
+<td>You get it when your average wpm is equal to or greater than 31.</td>
+      <td>Average</td>
+      <td><img src="/media/ranks/Average.png" style="width:40%" /></td>
+    </tr>
+                <tr>
+      <td>You get it when your average wpm is equal to or greater than 42.</td>
+      <td>Pro</td>
+      <td><img src="/media/ranks/Pro.png" style="width:40%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your average wpm is equal to or greater than 55.</td>
+      <td>Typemaster</td>
+      <td><img src="/media/ranks/Typemaster.png" style="width:40%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your average wpm is equal to or greater than 80.</td>
+      <td>Megaracer</td>
+      <td><img src="/media/ranks/Megaracer.png" style="width:40%" /></td>
+    </tr>
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+
+<div id="allachievements2" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements3', 'All Achievements', 'second')">Score level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>You get it when you are newbie.</td>
+      <td>Beginner</td>
+      <td><img src="/media/ranks/Beginner.png" style="width:60%" /></td>
+    </tr>
+                <tr>
+        <td>You get it when your number of words written is equal to or greater than 100. </td>
+      <td>Intermediate</td>
+      <td><img src="/media/ranks/Intermediate.png" style="width:60%" /></td>
+    </tr>
+                <tr>
+<td>You get it when your number of words written is equal to or greater than 500.</td>
+      <td>Average</td>
+      <td><img src="/media/ranks/Average.png" style="width:60%" /></td>
+    </tr>
+                <tr>
+      <td>You get it when your number of words written is equal to or greater than 2500.</td>
+      <td>Pro</td>
+      <td><img src="/media/ranks/Pro.png" style="width:60%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your number of words written is equal to or greater than 10000.</td>
+      <td>Typemaster</td>
+      <td><img src="/media/ranks/Typemaster.png" style="width:60%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your number of words written is equal to or greater than 50000.</td>
+      <td>Megaracer</td>
+      <td><img src="/media/ranks/Megaracer.png" style="width:60%" /></td>
+    </tr>
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements3" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements4', 'All Achievements', 'second')">Races number level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>You get it when you are newbie.</td>
+      <td>Beginner</td>
+      <td><img src="/media/ranks/Beginner.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+        <td>You get it when number of your finished races is equal to or greater than 10. </td>
+      <td>Intermediate</td>
+      <td><img src="/media/ranks/Intermediate.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+<td>You get it when number of your finished races is equal to or greater than 30.</td>
+      <td>Average</td>
+      <td><img src="/media/ranks/Average.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+      <td>You get it when number of your finished races is equal to or greater than 60.</td>
+      <td>Pro</td>
+      <td><img src="/media/ranks/Pro.png" style="width:80%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when number of your finished races is equal to or greater than 100.</td>
+      <td>Typemaster</td>
+      <td><img src="/media/ranks/Typemaster.png" style="width:80%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when number of your finished races is equal to or greater than 300.</td>
+      <td>Megaracer</td>
+      <td><img src="/media/ranks/Megaracer.png" style="width:80%" /></td>
+    </tr>
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements4" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements5', 'All Achievements', 'second')">Accuracy level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>You get it when you are newbie or your average accuracy is equal to or greater than 30.</td>
+      <td>Beginner</td>
+      <td><img src="/media/ranks/Beginner.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+        <td>You get it when your average accuracy is equal to or greater than 20. </td>
+      <td>Intermediate</td>
+      <td><img src="/media/ranks/Intermediate.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+<td>You get it when your average accuracy is equal to or greater than 10.</td>
+      <td>Average</td>
+      <td><img src="/media/ranks/Average.png" style="width:80%" /></td>
+    </tr>
+                <tr>
+      <td>You get it when your average accuracy is equal to or greater than 5.</td>
+      <td>Pro</td>
+      <td><img src="/media/ranks/Pro.png" style="width:80%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your average accuracy is equal to or greater than 3.</td>
+      <td>Typemaster</td>
+      <td><img src="/media/ranks/Typemaster.png" style="width:80%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when your average accuracy is less than 3.</td>
+      <td>Megaracer</td>
+      <td><img src="/media/ranks/Megaracer.png" style="width:80%" /></td>
+    </tr>
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements5" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements1', 'All Achievements', 'second')">Ranks number level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>You get it when you are newbie.</td>
+      <td>Beginner</td>
+      <td><img src="/media/ranks/Beginner.png" style="width:100%" /></td>
+    </tr>
+                <tr>
+        <td>You get it when the sum of points that you received for other achievements is equal to or greater than 60. </td>
+      <td>Intermediate</td>
+      <td><img src="/media/ranks/Intermediate.png" style="width:100%" /></td>
+    </tr>
+                <tr>
+<td>You get it when the sum of points that you received for other achievements is equal to or greater than 120.</td>
+      <td>Average</td>
+      <td><img src="/media/ranks/Average.png" style="width:100%" /></td>
+    </tr>
+                <tr>
+      <td>You get it when the sum of points that you received for other achievements is equal to or greater than 180.</td>
+      <td>Pro</td>
+      <td><img src="/media/ranks/Pro.png" style="width:100%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when the sum of points that you received for other achievements is equal to or greater than 240.</td>
+      <td>Typemaster</td>
+      <td><img src="/media/ranks/Typemaster.png" style="width:100%" /></td>
+    </tr>
+                                <tr>
+      <td>You get it when the sum of points that you received for other achievements is equal to or greater than 300.</td>
+      <td>Megaracer</td>
+      <td><img src="/media/ranks/Megaracer.png" style="width:100%" /></td>
+    </tr>
+                </tbody>
+
+     <div class="panel panel-default">
+<table class="table table-striped table-hover">
+
+      <tr>
+
+      <th><img src="/media/ranks/Beginner.png" style="width:25%" /><small>Beginner</small></th>
+      <th><img src="/media/ranks/Intermediate.png" style="width:20%" /> <small>Intermediate </small></th>
+      <th><img src="/media/ranks/Average.png" style="width:25%" /> <small>Average</small></th>
+        <th><img src="/media/ranks/Pro.png" style="width:30%" /> <small>Pro</small></th>
+      <th><img src="/media/ranks/Typemaster.png" style="width:20%" /> <small>Typemaster</small></th>
+      <th><img src="/media/ranks/Megaracer.png" style="width:20%" /> <small>Megaracer</small></th>
+    </tr>
+<tbody>
+      <tr>
+
+      <td>10 PTS</td>
+      <td>20 PTS </td>
+      <td>30 PTS</td>
+          <td>40 PTS</td>
+      <td>50 PTS</td>
+      <td>60 PTS</td>
+    </tr>
+
+</tbody>
+</div>
+</table>
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+        <script>
+        function openTab(evt, rankingNames, title, tabId) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].style.backgroundColor = "#fafafa";
+            }
+            document.getElementById(rankingNames).style.display = "block";
+            document.getElementById('title').innerText = title;
+            document.getElementById(tabId).style.backgroundColor = "#e7e7e7";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+{% endblock %}

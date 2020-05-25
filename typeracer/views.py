@@ -7,7 +7,7 @@ from typer.models import Game
 
 
 def home(request):
-    messages.info(request, 'Tutaj możesz zagrać w grę OFFLINE')
+    messages.info(request, 'Here you can play the game OFFLINE')
     return render(request, 'home.html')
 
 

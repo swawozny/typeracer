@@ -266,7 +266,7 @@ function finishGame() {
     success: function(data) {
     },
         error: function(){
-            alert('Coś poszło nie tak...')
+            alert('Something goes wrong...')
         }
 });
 

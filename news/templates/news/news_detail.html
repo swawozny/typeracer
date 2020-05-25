@@ -3,14 +3,14 @@
     <article class="media content-section">
     <div class="media-body">
     <h1>{{ post.title }}</h1>
-                <small> Napisane przez {{ post.author }}<a href="{{ post.get_update_url }}"></a></small>
+                <small> Written by {{ post.author }}<a href="{{ post.get_update_url }}"></a></small>
 
             <p><img src="{{ post.image.url }}" style="width:100%" alt="Nature"></p>
             <p>{{ post.description }}</p>
-        <button><a href="/aktualnosci/">Wróć</a></button>
+        <button><a href="/news/">Back</a></button>
          {% if user.is_authenticated %}
-            <button><a href="{{ post.get_update_url }}">Edytuj</a></button>
-        <button><a href="{{ post.get_delete_url }}">Usuń</a></button>
+            <button><a href="{{ post.get_update_url }}">Edit</a></button>
+        <button><a href="{{ post.get_delete_url }}">Delete</a></button>
          {% endif %}
         </div>
      </article>

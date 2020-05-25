@@ -88,6 +88,39 @@ class Profile(models.Model):
         else:
             return Levels.Beginner.name
 
+    def get_summary_lvl(self):
+
+        ranks = [self.get_accuracy_lvl(), self.get_races_lvl(), self.get_score_lvl(), self.get_typing_lvl()]
+
+        points = 0
+
+        for rank in ranks:
+            if rank == Levels.Beginner.name:
+                points += 10
+            elif rank == Levels.Intermediate.name:
+                points += 20
+            elif rank == Levels.Average.name:
+                points += 30
+            elif rank == Levels.Pro.name:
+                points += 40
+            elif rank == Levels.Typemaster.name:
+                points += 50
+            else:
+                points += 60
+
+        if points < 60:
+            return Levels.Beginner.name
+        elif points < 120:
+            return Levels.Intermediate.name
+        elif points < 180:
+            return Levels.Average.name
+        elif points < 240:
+            return Levels.Pro.name
+        elif points < 300:
+            return Levels.Typemaster.name
+        elif points >= 300:
+            return Levels.Megaracer.name
+
 
 def update_user(request, wpm, cpm, errors):
     try:

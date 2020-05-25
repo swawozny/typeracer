@@ -10,8 +10,8 @@ from register import models
 
 
 def typer_list(request):
-    messages.info(request, 'Tutaj możesz zagrać w grę ONLINE')
-    return render(request, 'typer/typer_list.html')
+    messages.info(request, 'Here you can play the game ONLINE')
+    return render(request, 'typer/typer.html')
 
 
 @login_required()

@@ -26,14 +26,13 @@ urlpatterns = [
     path('', views.home),
     path('ranking/', include('ranking.urls')),
     path('achievements/', include('achievements.urls')),
-    path('rejestracja/', include('register.urls')),
+    path('register/', include('register.urls')),
     path('profile/', user_views.profile, name='profile'),
-    path('onas/', include('about.urls')),
-    path('aktualnosci/', include('news.urls')),
-    path('chatbox/', include('chatbox.urls')),
+    path('about/', include('about.urls')),
+    path('news/', include('news.urls')),
     path('typeracer/', include('typer.urls')),
-    path('logowanie/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
-    path('wylogowanie/', auth_views.LogoutView.as_view(template_name='register/logout.html'), name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='register/logout.html'), name='logout'),
 ]
 
 if settings.DEBUG:

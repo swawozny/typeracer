@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
       <div class="content-section">
-    <h1>Dodaj wpis</h1>
+    <h1>Add news</h1>
           {% if user.is_authenticated %}
     <form method="POST" action="." enctype="multipart/form-data">
     {% csrf_token %}
@@ -11,7 +11,7 @@
     </form>
       {% else %}
        <small class="text-muted">
-             <a class="ml-2" href="/logowanie">Zaloguj</a>
+             <a class="ml-2" href="/login">Log in</a>
         </small>
           {% endif %}
       </div>

@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Aktualności</h1>
+    <h1>News</h1>
     {% if user.is_authenticated %}
-    <button><a href="/aktualnosci/create">Dodaj post</a></button>
+    <button><a href="/news/create">Add news</a></button>
     {% endif %}
     {%  for post in all_posts %}
         <article class="media content-section">
         <div class="w3-row">
     <div class="media-body">
       <h1 class="article-title"><a href="{{  post.get_absolute_url }}">{{ post.title }}</a></h1>
-        <small>Napisane przez {{ post.author }}<a href="{{ post.get_update_url }}"></a> dnia  {{ post.date }}</small>
+        <small>Written by {{ post.author }}<a href="{{ post.get_update_url }}"></a> on  {{ post.date }}</small>
 
       <p>{{ post.cut_text }}</p>
     </div>

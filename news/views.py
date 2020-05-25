@@ -11,8 +11,8 @@ def news_list(request):
     context = {
         'all_posts': all_posts
     }
-    messages.info(request, 'Tutaj są wszystkie aktualności')
-    return render(request, 'news/news_list.html', context)
+    messages.info(request, 'Here are the posts')
+    return render(request, 'news/news.html', context)
 
 
 # CRUD
@@ -22,7 +22,7 @@ def news_detail(request, slug):
     context = {
         'post': unique_post
     }
-    messages.info(request, 'Tutaj jest rozwinięcie wpisu')
+    messages.info(request, 'Here are post details')
     return render(request, "news/news_detail.html", context)
 
 
@@ -35,8 +35,8 @@ def posts_create(request):
     if form.is_valid():
         form.instance.author = author
         form.save()
-        messages.info(request, 'Udało się dodać wpis')
-        return redirect('/aktualnosci/')
+        messages.info(request, 'Post was successfully added')
+        return redirect('/news/')
     context = {
         'form': form
     }
@@ -50,8 +50,8 @@ def posts_update(request, slug):
                          instance=unique_post)
     if form.is_valid():
         form.save()
-        messages.info(request, 'Udało się zaktualizować post')
-        return redirect('/aktualnosci/')
+        messages.info(request, 'Post was successfully updated')
+        return redirect('/news/')
     context = {
         'form': form
     }
@@ -61,5 +61,5 @@ def posts_update(request, slug):
 def posts_delete(request, slug):
     unique_post = get_object_or_404(Post, slug=slug)
     unique_post.delete()
-    messages.info(request, 'Udało się usunąć wpis')
-    return redirect('/aktualnosci/')
+    messages.info(request, 'post was successfully deleted')
+    return redirect('/news/')

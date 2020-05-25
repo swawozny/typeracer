@@ -14,7 +14,7 @@ def ranking_list(request):
     hours, days, weeks, months, years, forever = get_games()
     users_words, users_avg_cpm, users_race, users_avg_wpm = get_users_games()
     my_wpm, my_cpm, my_error, my_date = get_my_games(request)
-    return render(request, 'ranking/ranking_list.html', {
+    return render(request, 'ranking/ranking.html', {
         'hours': hours, 'days': days, 'weeks': weeks, 'months': months, 'years': years, 'forever': forever,
         'my_wpm': my_wpm, 'my_cpm': my_cpm, 'my_error': my_error, 'my_date': my_date,
         'users_words': users_words, 'users_avg_cpm': users_avg_cpm, 'users_race': users_race,
@@ -71,7 +71,7 @@ def get_users_games():
 
 def get_my_games(request):
     if not request.user.is_authenticated:
-        messages.info(request, 'Musisz zalogować się, żeby zobaczyć My Scores')
+        messages.info(request, 'You must be logged to see your scores')
         return None, None, None, None
     wpm = Game.objects.all().filter(user=request.user).order_by('-wpm')[:20]
     cpm = Game.objects.all().filter(user=request.user).order_by('-cpm')[:20]

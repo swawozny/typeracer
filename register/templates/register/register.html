@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1 class="w3-text-teal">Rejestracja</h1>
+    <h1 class="w3-text-teal">Register</h1>
     <div class="content-section">
         <form method="POST">
         {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Dołącz dziś</legend>
+                <legend class="border-bottom mb-4">Join today</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Zarejestruj się</button>
+                <button class="btn btn-outline-info" type="submit">Sign in</button>
             </div>
         </form>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Posiadasz już konto? <a class="ml-2" href="/logowanie">Zaloguj się</a>
+            Do you already have an account? <a class="ml-2" href="/login">Log in</a>
         </small>
     </div>
     </div>

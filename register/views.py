@@ -11,11 +11,11 @@ def register_list(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Konto zostało pomyślnie stworzone! Możesz się teraz zalogować')
+            messages.success(request, f'Account has been created! You can now log in!')
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'register/register_list.html', {'form': form})
+    return render(request, 'register/register.html', {'form': form})
 
 
 @login_required
@@ -28,7 +28,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'Twoje konto zostało zaaktualizowane!')
+            messages.success(request, f'Your account has been updated!')
             return redirect('profile')
 
     else:

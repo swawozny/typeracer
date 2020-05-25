@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'register',
     'about',
     'news',
-    'chatbox',
     'typer',
     'crispy_forms',
 ]

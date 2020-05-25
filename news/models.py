@@ -16,13 +16,13 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return "/aktualnosci/{}/".format(self.slug)
+        return "/news/{}/".format(self.slug)
 
     def get_update_url(self):
-        return "/aktualnosci/{}/update/".format(self.slug)
+        return "/news/{}/update/".format(self.slug)
 
     def get_delete_url(self):
-        return "/aktualnosci/{}/delete/".format(self.slug)
+        return "/news/{}/delete/".format(self.slug)
 
     def cut_text(self):
         return self.description[:670] + '...'

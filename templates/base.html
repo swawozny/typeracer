@@ -22,7 +22,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">Strona Główna</a>
+          <a class="navbar-brand mr-4" href="/">Home</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,17 +31,16 @@
                 <a class="nav-item nav-link" href="/typeracer">TypeRacer</a>
                 <a class="nav-item nav-link" href="/ranking">Ranking</a>
                 <a class="nav-item nav-link" href="/achievements">Achievements</a>
-                <a class="nav-item nav-link" href="/chatbox">ChatBox</a>
-                <a class="nav-item nav-link" href="/aktualnosci">Aktualności</a>
-              <a class="nav-item nav-link" href="/onas">O nas</a>
+                <a class="nav-item nav-link" href="/news">News</a>
+              <a class="nav-item nav-link" href="/about">About</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
                 {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="/wylogowanie">Wyloguj się</a>
+                <a class="nav-item nav-link" href="/logout">Log out</a>
                 {% else %}
-              <a class="nav-item nav-link" href="/logowanie">Logowanie</a>
-              <a class="nav-item nav-link" href="/rejestracja">Rejestracja</a>
+              <a class="nav-item nav-link" href="/login">Log in</a>
+              <a class="nav-item nav-link" href="/register">Sign in</a>
                 {% endif %}
             </div>
           </div>
@@ -64,18 +63,18 @@
         <div class="col-md-4">
           <div class="content-section">
             <h3><img class="rounded-circle account-img" src="{{ user.profile.image.url }}">{{ user.username }}</h3>
-              <p class='text-muted'>Opcje profilowe</p>
+              <p class='text-muted'>Profile options</p>
               <ul class="list-group">
-              <li class="list-group-item list-group-item-light"><a href="/profile">Edytuj profil</a></li>
-                  <li class="list-group-item list-group-item-light"> <strong>Średni WPM:</strong> {{wpm}} </li>
-                  <li class="list-group-item list-group-item-light"><strong>Średni CPM:</strong> {{cpm}}</li>
-                  <li class="list-group-item list-group-item-light"><p><strong>Ostatni wynik:</strong></p>
+              <li class="list-group-item list-group-item-light"><a href="/profile">Edit profile</a></li>
+                  <li class="list-group-item list-group-item-light"> <strong>Average WPM:</strong> {{wpm}} </li>
+                  <li class="list-group-item list-group-item-light"><strong>Average CPM:</strong> {{cpm}}</li>
+                  <li class="list-group-item list-group-item-light"><p><strong>Last game:</strong></p>
                       <p>
                       <mark>WPM:</mark> {{ lastgame.wpm }}
                      <mark>CPM:</mark> {{ lastgame.cpm }}
                       <mark>Errors:</mark> {{ lastgame.errors }}
                           </p>
-                      <mark>Data:</mark> {{ lastgame.date }}
+                      <mark>Date:</mark> {{ lastgame.date }}
 
 
                             </tr> </li>
