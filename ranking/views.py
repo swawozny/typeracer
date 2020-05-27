@@ -52,10 +52,11 @@ def date_diff_in_hours(games):
 
 def date_diff_in_days(games):
     for game in games:
+        time_days = (utc.localize(datetime.now()) - game.date).days
         time_seconds = (utc.localize(datetime.now()) - game.date).seconds
-        game.date = str(time_seconds // 86400) + ' d ' \
-                    + str(time_seconds // 3600) + ' h ' \
-                    + str((time_seconds // 60) % 60) + ' min ago'
+
+        game.date = str(time_days) + ' d ' + str(time_seconds // 3600) + ' h ' + \
+                    str((time_seconds // 60) % 60) + ' min ago'
     return games
 
 
@@ -65,8 +66,6 @@ def get_users_games():
     users_avg_wpm = Profile.objects.all().order_by('-avg_wpm')[:20]
     users_race = Profile.objects.all().order_by('-races')[:20]
     return users_words, users_avg_cpm, users_race, users_avg_wpm
-
-
 
 
 def get_my_games(request):
