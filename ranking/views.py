@@ -9,17 +9,18 @@ from register.models import Profile
 from typer.models import Game
 
 
-# Create your views here.
 def ranking_list(request):
     hours, days, weeks, months, years, forever = get_games()
     users_words, users_avg_cpm, users_race, users_avg_wpm = get_users_games()
     my_wpm, my_cpm, my_error, my_date = get_my_games(request)
-    return render(request, 'ranking/ranking.html', {
+    context = {
         'hours': hours, 'days': days, 'weeks': weeks, 'months': months, 'years': years, 'forever': forever,
         'my_wpm': my_wpm, 'my_cpm': my_cpm, 'my_error': my_error, 'my_date': my_date,
         'users_words': users_words, 'users_avg_cpm': users_avg_cpm, 'users_race': users_race,
         'users_avg_wpm': users_avg_wpm
-    })
+    }
+
+    return render(request, 'ranking/ranking.html', context)
 
 
 def get_games():

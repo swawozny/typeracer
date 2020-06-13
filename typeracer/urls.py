@@ -15,15 +15,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf.urls.static import static
-from . import views, settings
 from django.contrib.auth import views as auth_views
 from register import views as user_views
+from typeracer import settings
+from training import views as training_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('', include('training.urls')),
     path('ranking/', include('ranking.urls')),
     path('achievements/', include('achievements.urls')),
     path('register/', include('register.urls')),

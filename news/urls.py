@@ -1,6 +1,6 @@
-from django.urls import path, include
 from django.conf.urls import url
-from . import views
+from django.urls import path
+
 from .views import posts_create, news_detail, news_list, posts_update, posts_delete
 
 urlpatterns = [
@@ -9,6 +9,4 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/update/$', posts_update),
     url(r'^(?P<slug>[\w-]+)/delete/$', posts_delete),
     url(r'^(?P<slug>[\w-]+)/$', news_detail),
-
-
 ]

@@ -14,14 +14,14 @@ class Game(models.Model):
     errors = models.IntegerField(default=0, null=True)
     date = models.DateTimeField(default=datetime.now, blank=True)
 
-    def getAvgWPM(request):
-        return Game.objects.all().filter(user=request.user).aggregate(Avg('wpm'))['wpm__avg']
+    def get_avg_wpm(self):
+        return Game.objects.all().filter(user=self.user).aggregate(Avg('wpm'))['wpm__avg']
 
-    def getAvgCPM(request):
-        return Game.objects.all().filter(user=request.user).aggregate(Avg('cpm'))['cpm__avg']
+    def get_avg_cpm(self):
+        return Game.objects.all().filter(user=self.user).aggregate(Avg('cpm'))['cpm__avg']
 
-    def getLastGame(request):
-        return Game.objects.all().filter(user=request.user).order_by('-date')[0]
+    def get_last_name(self):
+        return Game.objects.all().filter(user=self.user).order_by('-date')[0]
 
 
 def save(self, *args, **kwargs):

@@ -3,14 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from .models import Game
-
-from django.views.decorators.http import require_POST
 from register import models
+from .models import Game
 
 
 def typer_list(request):
-    messages.info(request, 'Here you can play the game ONLINE')
+    if not request.user.is_authenticated:
+        messages.info(request, 'Log in to remember your stats and observe your progress')
     return render(request, 'typer/typer.html')
 
 

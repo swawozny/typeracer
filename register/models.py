@@ -1,8 +1,10 @@
 import enum
 
 from django.contrib.auth.models import User
+from django.core.mail.backends import console
 from django.db import models
 
+from training.models import Level
 from typer.models import Game
 
 
@@ -15,8 +17,13 @@ class Levels(enum.Enum):
     Megaracer = 6
 
 
+def get_training_lvl():
+    return Level.objects.get(level_no=1)
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    training_lvl = models.ForeignKey(Level, on_delete=models.CASCADE, default=get_training_lvl)
     words = models.IntegerField(null=False, default=0)
     characters = models.IntegerField(null=False, default=0)
     avg_cpm = models.IntegerField(null=False, default=0)
@@ -129,12 +136,12 @@ def update_user(request, wpm, cpm, errors):
         profile.characters += int(cpm)
         profile.errors += int(errors)
         profile.races += 1
-        profile.avg_cpm = (profile.characters) / profile.races
-        profile.avg_wpm = (profile.words) / profile.races
+        profile.avg_cpm = profile.characters / profile.races
+        profile.avg_wpm = profile.words / profile.races
         if profile.characters + int(cpm) != 0:
-            profile.avg_accuracy = 1 - ((profile.errors) / profile.characters)
+            profile.avg_accuracy = 1 - (profile.errors / profile.characters)
         else:
-            new_avg_accuracy = None
+            pass
 
         profile.save()
     except:

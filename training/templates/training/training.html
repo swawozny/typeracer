@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-text-teal">Training</h1>
+    <article class="media content-section">
+        <div class="row">
+            {% for level in levels %}
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="{{ level.get_absolute_url }}">Level {{ level.level_no }}</a>
+                    </h4>
+                    <p class="card-text">Minimal WPM: {{ level.min_wpm }} Maximum Errors: {{ level.max_err }}</p>
+                  </div>
+                  <div class="card-footer">
+                      {% if user_training_lvl == level.level_no %}
+                        <small class="text-muted">Unlocked</small>
+                      {% else %}
+                        <small class="text-muted">Locked</small>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    </article>
+{% endblock %}

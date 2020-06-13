@@ -2,23 +2,26 @@
 {% block content %}
     <h1>News</h1>
     {% if user.is_authenticated %}
-    <button><a href="/news/create">Add news</a></button>
+        <button><a href="/news/create">Add news</a></button>
     {% endif %}
-    {%  for post in all_posts %}
+    {% for post in all_posts %}
         <article class="media content-section">
-        <div class="w3-row">
-    <div class="media-body">
-      <h1 class="article-title"><a href="{{  post.get_absolute_url }}">{{ post.title }}</a></h1>
-        <small>Written by {{ post.author }}<a href="{{ post.get_update_url }}"></a> on  {{ post.date }}</small>
-
-      <p>{{ post.cut_text }}</p>
-    </div>
-    <div class="media-body">
-
-      <p><img src="{{ post.image.url }}" style="width:100%" alt="Nature"></p>
-    </div>
-  </div>
+            <div class="w3-row">
+                <div class="media-body">
+                    <h1 class="article-title">
+                        <a href="{{ post.get_absolute_url }}">
+                            {{ post.title }}
+                        </a>
+                    </h1>
+                    <small>
+                        Written by {{ post.author }}<a href="{{ post.get_update_url }}"></a> on  {{ post.date }}
+                    </small>
+                    <p>{{ post.cut_text }}</p>
+                </div>
+                <div class="media-body">
+                    <p><img src="{{ post.image.url }}" style="width:100%" alt="Nature"></p>
+                </div>
+            </div>
         </article>
-
     {% endfor %}
 {% endblock %}

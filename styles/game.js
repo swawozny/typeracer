@@ -1,10 +1,9 @@
-
-// define the time limit 
-let TIME_LIMIT = 5;
+// define the time limit
+let TIME_LIMIT = 30;
   
 // define quotes to be used 
 let quotes_array = [ 
-  "Push yourself, because no one else is going to do it for you.", 
+  "Push yourself, because no one else is going to do it for you",
   "Failure is the condiment that gives success its flavor.", 
   "Wake up with determination. Go to bed with satisfaction.", 
   "It's going to be hard, but hard does not mean impossible.", 
@@ -22,8 +21,8 @@ let quote_text = document.querySelector(".quote");
 let input_area = document.querySelector(".input_area"); 
 let restart_btn = document.querySelector(".restart_btn"); 
 let cpm_group = document.querySelector(".cpm"); 
-let wpm_group = document.querySelector(".wpm"); 
-let error_group = document.querySelector(".errors"); 
+let wpm_group = document.querySelector(".wpm");
+let error_group = document.querySelector(".errors");
 let accuracy_group = document.querySelector(".accuracy"); 
   
 let timeLeft = TIME_LIMIT; 
@@ -38,37 +37,34 @@ let timer = null;
 
 
 function updateQuote() { 
-    quote_text.textContent = null; 
-    current_quote = quotes_array[quoteNo]; 
-    
-    // separate each character and make an element  
-    // out of each of them to individually style them 
-    current_quote.split('').forEach(char => { 
-      const charSpan = document.createElement('span') 
-      charSpan.innerText = char 
-      quote_text.appendChild(charSpan) 
-    }) 
-    
-    // roll over to the first quote 
-    if (quoteNo < quotes_array.length - 1) 
-      quoteNo++; 
-    else
-      quoteNo = 0; 
-  } 
+    quote_text.textContent = null;
+    current_quote = quotes_array[quoteNo];
 
+    // separate each character and make an element
+    // out of each of them to individually style them
+    current_quote.split('').forEach(char => {
+      const charSpan = document.createElement('span')
+      charSpan.innerText = char
+      quote_text.appendChild(charSpan)
+    })
+
+    // roll over to the first quote
+    if (quoteNo < quotes_array.length - 1)
+      quoteNo++;
+    else
+      quoteNo = 0;
+}
 
 function processCurrentText() { 
-  
-      // get current input text and split it 
-    curr_input = input_area.value; 
-    curr_input_array = curr_input.split(''); 
-    
+    // get current input text and split it
+    let curr_input = input_area.value;
+    let curr_input_array = curr_input.split('');
+
     // increment total characters typed 
-    characterTyped++; 
-    
-    errors = 0; 
-    
-    quoteSpanArray = quote_text.querySelectorAll('span'); 
+    characterTyped++;
+    errors = 0;
+
+    let quoteSpanArray = quote_text.querySelectorAll('span');
     quoteSpanArray.forEach((char, index) => { 
       let typedChar = curr_input_array[index] 
     
@@ -102,7 +98,7 @@ function processCurrentText() {
     
     // if current text is completely typed 
     // irrespective of errors 
-    if (curr_input.length == current_quote.length) { 
+    if (curr_input.length === current_quote.length) {
       updateQuote(); 
     
       // update total errors 
@@ -111,53 +107,44 @@ function processCurrentText() {
       // clear the input area 
       input_area.value = ""; 
     } 
-} 
-  
+}
 
-function startGame() { 
-  
+function startGame() {
     resetValues(); 
     updateQuote(); 
     
     // clear old and start a new timer 
     clearInterval(timer); 
     timer = setInterval(updateTimer, 1000);
+}
 
-  }
-
-  function startTrialGame() {
-
+function startTrialGame() {
     resetValues();
     updateQuote();
 
     // clear old and start a new timer
     clearInterval(timer);
     timer = setInterval(updateTrialTimer, 1000);
-
-  }
+}
     
-  function resetValues() {
+function resetValues() {
+    timeLeft = TIME_LIMIT;
+    timeElapsed = 0;
+    errors = 0;
+    total_errors = 0;
+    accuracy = 0;
+    characterTyped = 0;
+    quoteNo = 0;
+    input_area.disabled = false;
 
-    timeLeft = TIME_LIMIT; 
-    timeElapsed = 0; 
-    errors = 0; 
-    total_errors = 0; 
-    accuracy = 0; 
-    characterTyped = 0; 
-    quoteNo = 0; 
-    input_area.disabled = false; 
-    
-    input_area.value = ""; 
-    quote_text.textContent = 'Click on the area below to start the game.'; 
-    accuracy_text.textContent = 100; 
-    timer_text.textContent = timeLeft + 's'; 
-    error_text.textContent = 0; 
-    restart_btn.style.display = "none"; 
-    cpm_group.style.display = "none"; 
+    input_area.value = "";
+    quote_text.textContent = 'Click on the area below to start the training.';
+    accuracy_text.textContent = 100;
+    timer_text.textContent = timeLeft + 's';
+    error_text.textContent = 0;
+    restart_btn.style.display = "none";
+    cpm_group.style.display = "none";
     wpm_group.style.display = "none";
-
-
-
 }
 
 function updateTrialTimer() {
@@ -172,11 +159,9 @@ function updateTrialTimer() {
       timer_text.textContent = timeLeft + "s";
     }
     else {
-      // finish the game
+      // finish the training
       finishTrialGame();
     }
-
-
 }
 
 function updateTimer() { 
@@ -189,13 +174,11 @@ function updateTimer() {
     
       // update the timer text 
       timer_text.textContent = timeLeft + "s"; 
-    } 
-    else { 
-      // finish the game 
+    }
+    else {
+      // finish the training
       finishGame(); 
     }
-
-
 }
 
 function finishTrialGame() {
@@ -206,31 +189,23 @@ function finishTrialGame() {
     input_area.disabled = true;
 
     // show finishing text
-    quote_text.textContent = "Click on restart to start a new game.";
+    quote_text.textContent = "Click on restart to start a new training.";
 
     // display restart button
     restart_btn.style.display = "block";
 
     // calculate cpm and wpm
-    cpm = Math.round(((characterTyped / timeElapsed) * 60));
-    wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
-
-
+    let cpm = Math.round(((characterTyped / timeElapsed) * 60));
+    let wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
     // update cpm and wpm text
     cpm_text.textContent = cpm;
     wpm_text.textContent = wpm;
 
-
-
     // display the cpm and wpm
     cpm_group.style.display = "block";
     wpm_group.style.display = "block";
-
-
-
-
-  }
+}
 
 function finishGame() { 
     // stop the timer 
@@ -240,64 +215,55 @@ function finishGame() {
     input_area.disabled = true; 
     
     // show finishing text 
-    quote_text.textContent = "Click on restart to start a new game."; 
+    quote_text.textContent = "Click on restart to start a new training.";
     
     // display restart button 
     restart_btn.style.display = "block"; 
     
     // calculate cpm and wpm 
-    cpm = Math.round(((characterTyped / timeElapsed) * 60)); 
-    wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
-
+    let cpm = Math.round(((characterTyped / timeElapsed) * 60));
+    let wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
     $.ajax({
         headers: {
             'X-CSRFToken': getCookie('csrftoken')
         },
-    url:'end_game/',
+        url:'end_game/',
         method: "POST",
-    data: {
+        data: {
             cpm: cpm,
-        wpm: wpm,
-        errors: errors,
+            wpm: wpm,
+            errors: errors,
         },
         dataType: "text",
         async: true,
-    success: function(data) {
-    },
-        error: function(){
+        success: function(data) {
+        },
+        error: function() {
             alert('Something goes wrong...')
         }
-});
+    });
 
-
-    
     // update cpm and wpm text 
     cpm_text.textContent = cpm; 
     wpm_text.textContent = wpm;
 
-
-
     // display the cpm and wpm 
     cpm_group.style.display = "block"; 
     wpm_group.style.display = "block";
+}
 
-
-
-
-  }
-
-  function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-            return cookieValue;
         }
+    }
+    return cookieValue;
+}
