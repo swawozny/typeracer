@@ -5,6 +5,7 @@ from django.db.models import Avg
 from numpy import unicode
 
 from news.models import User
+from training.models import Level
 
 
 class Game(models.Model):

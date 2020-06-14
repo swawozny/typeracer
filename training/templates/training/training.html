@@ -8,12 +8,16 @@
                 <div class="card h-100">
                   <div class="card-body">
                     <h4 class="card-title">
-                      <a href="{{ level.get_absolute_url }}">Level {{ level.level_no }}</a>
+                        {% if user_training_lvl >= level.level_no %}
+                            <a href="{{ level.get_absolute_url }}" style="color: green">Level {{ level.level_no }}</a>
+                        {% else %}
+                            <a href="" style="color: red">Level {{ level.level_no }}</a>
+                        {% endif %}
                     </h4>
                     <p class="card-text">Minimal WPM: {{ level.min_wpm }} Maximum Errors: {{ level.max_err }}</p>
                   </div>
                   <div class="card-footer">
-                      {% if user_training_lvl == level.level_no %}
+                      {% if user_training_lvl >= level.level_no %}
                         <small class="text-muted">Unlocked</small>
                       {% else %}
                         <small class="text-muted">Locked</small>
