@@ -23,8 +23,8 @@ class Level(models.Model):
 
 
 class LevelResult(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    level = models.OneToOneField(Level, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
     wpm = models.IntegerField(default=0, null=True)
     cpm = models.IntegerField(default=0, null=True)
     errors = models.IntegerField(default=0, null=True)

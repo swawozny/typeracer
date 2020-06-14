@@ -18,7 +18,7 @@
               </div>
               <div class="timer">
                 <div class="header_text">Time</div>
-                <div class="curr_time">60s</div>
+                <div class="curr_time">{{ level.time }}s</div>
               </div>
               <div class="accuracy">
                 <div class="header_text">% Accuracy</div>
@@ -28,14 +28,14 @@
             <div class="quote">
               Click on the area below to start the game.
             </div>
-            <label for="input_offline"></label>
+            <label for="input_level"></label>
             <input
                     type="text"
                     class="input_area"
-                    id="input_offline"
+                    id="input_level"
                     placeholder="start typing here..."
                     oninput="processCurrentText()"
-                    onfocus="startTrialGame()"
+                    onfocus="startGame('level')"
             >
             <button class="restart_btn"
               ondblclick="resetValues()">
@@ -47,7 +47,11 @@
     <!-- link the JavaScript file here -->
     <script>
         function getText() {
-            return ["{{ level.text }}"]
+            return "{{ level.text }}".split(". ");
+        }
+
+        function getTime() {
+            return "{{ level.time }}";
         }
     </script>
     <script src="../../../styles/game.js"></script>

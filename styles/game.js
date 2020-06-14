@@ -1,20 +1,15 @@
 // define the time limit
-let TIME_LIMIT = 30;
+let TIME_LIMIT = getTime();
+if (TIME_LIMIT == null) {
+    TIME_LIMIT = 60;
+}
 
 // define quotes to be used
-let  quotes_array = getText();
+let text = null;
 
-/*    "Push yourself, because no one else is going to do it for you",
-    "Failure is the condiment that gives success its flavor.",
-    "Wake up with determination. Go to bed with satisfaction.",
-    "It's going to be hard, but hard does not mean impossible.",
-    "Learning never exhausts the mind.",
-    "The only way to do great work is to love what you do."
-];*/
+// define game type
+let gameType = null
 
-
-
-  
 // selecting required elements 
 let timer_text = document.querySelector(".curr_time"); 
 let accuracy_text = document.querySelector(".curr_accuracy"); 
@@ -27,9 +22,9 @@ let restart_btn = document.querySelector(".restart_btn");
 let cpm_group = document.querySelector(".cpm"); 
 let wpm_group = document.querySelector(".wpm");
 let error_group = document.querySelector(".errors");
-let accuracy_group = document.querySelector(".accuracy"); 
-  
-let timeLeft = TIME_LIMIT; 
+let accuracy_group = document.querySelector(".accuracy");
+
+let timeLeft = TIME_LIMIT;
 let timeElapsed = 0; 
 let total_errors = 0; 
 let errors = 0; 
@@ -37,12 +32,11 @@ let accuracy = 0;
 let characterTyped = 0; 
 let current_quote = ""; 
 let quoteNo = 0; 
-let timer = null; 
-
+let timer = null;
 
 function updateQuote() { 
     quote_text.textContent = null;
-    current_quote = quotes_array[quoteNo];
+    current_quote = text[quoteNo];
 
     // separate each character and make an element
     // out of each of them to individually style them
@@ -53,7 +47,7 @@ function updateQuote() {
     })
 
     // roll over to the first quote
-    if (quoteNo < quotes_array.length - 1)
+    if (quoteNo < text.length - 1)
       quoteNo++;
     else
       quoteNo = 0;
@@ -93,12 +87,12 @@ function processCurrentText() {
     }); 
     
     // display the number of errors 
-    error_text.textContent = total_errors + errors; 
+    error_text.textContent = String(total_errors + errors);
     
     // update accuracy text 
     let correctCharacters = (characterTyped - (total_errors + errors)); 
     let accuracyVal = ((correctCharacters / characterTyped) * 100); 
-    accuracy_text.textContent = Math.round(accuracyVal); 
+    accuracy_text.textContent = String(Math.round(accuracyVal));
     
     // if current text is completely typed 
     // irrespective of errors 
@@ -113,22 +107,15 @@ function processCurrentText() {
     } 
 }
 
-function startGame() {
+function startGame(type) {
+    gameType = type;
+    text = getText();
     resetValues(); 
     updateQuote(); 
     
     // clear old and start a new timer 
     clearInterval(timer); 
     timer = setInterval(updateTimer, 1000);
-}
-
-function startTrialGame() {
-    resetValues();
-    updateQuote();
-
-    // clear old and start a new timer
-    clearInterval(timer);
-    timer = setInterval(updateTrialTimer, 1000);
 }
     
 function resetValues() {
@@ -143,29 +130,12 @@ function resetValues() {
 
     input_area.value = "";
     quote_text.textContent = 'Click on the area below to start the training.';
-    accuracy_text.textContent = 100;
+    accuracy_text.textContent = String(100);
     timer_text.textContent = timeLeft + 's';
-    error_text.textContent = 0;
+    error_text.textContent = String(0);
     restart_btn.style.display = "none";
     cpm_group.style.display = "none";
     wpm_group.style.display = "none";
-}
-
-function updateTrialTimer() {
-    if (timeLeft > 0) {
-      // decrease the current time left
-      timeLeft--;
-
-      // increase the time elapsed
-      timeElapsed++;
-
-      // update the timer text
-      timer_text.textContent = timeLeft + "s";
-    }
-    else {
-      // finish the training
-      finishTrialGame();
-    }
 }
 
 function updateTimer() { 
@@ -185,32 +155,6 @@ function updateTimer() {
     }
 }
 
-function finishTrialGame() {
-    // stop the timer
-    clearInterval(timer);
-
-    // disable the input area
-    input_area.disabled = true;
-
-    // show finishing text
-    quote_text.textContent = "Click on restart to start a new training.";
-
-    // display restart button
-    restart_btn.style.display = "block";
-
-    // calculate cpm and wpm
-    let cpm = Math.round(((characterTyped / timeElapsed) * 60));
-    let wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
-
-    // update cpm and wpm text
-    cpm_text.textContent = cpm;
-    wpm_text.textContent = wpm;
-
-    // display the cpm and wpm
-    cpm_group.style.display = "block";
-    wpm_group.style.display = "block";
-}
-
 function finishGame() { 
     // stop the timer 
     clearInterval(timer); 
@@ -228,29 +172,52 @@ function finishGame() {
     let cpm = Math.round(((characterTyped / timeElapsed) * 60));
     let wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
-    $.ajax({
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken')
-        },
-        url:'end_game/',
-        method: "POST",
-        data: {
-            cpm: cpm,
-            wpm: wpm,
-            errors: errors,
-        },
-        dataType: "text",
-        async: true,
-        success: function(data) {
-        },
-        error: function() {
-            alert('Something goes wrong...')
-        }
-    });
+    if (gameType === 'online') {
+        $.ajax({
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            url: 'end_game/',
+            method: "POST",
+            data: {
+                cpm: cpm,
+                wpm: wpm,
+                errors: errors,
+            },
+            dataType: "text",
+            async: true,
+            success: function (data) {
+            },
+            error: function () {
+                alert('Something goes wrong...')
+            }
+        });
+    }
+    else if (gameType === 'level') {
+        $.ajax({
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            url: 'end_level_game/',
+            method: "POST",
+            data: {
+                cpm: cpm,
+                wpm: wpm,
+                errors: errors,
+            },
+            dataType: "text",
+            async: true,
+            success: function (data) {
+            },
+            error: function () {
+                alert('Something goes wrong...')
+            }
+        });
+    }
 
     // update cpm and wpm text 
-    cpm_text.textContent = cpm; 
-    wpm_text.textContent = wpm;
+    cpm_text.textContent = String(cpm);
+    wpm_text.textContent = String(wpm);
 
     // display the cpm and wpm 
     cpm_group.style.display = "block"; 

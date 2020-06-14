@@ -129,9 +129,11 @@ class Profile(models.Model):
             return Levels.Megaracer.name
 
 
-def update_user(request, wpm, cpm, errors):
+def update_user(request, wpm, cpm, errors, level):
     try:
         profile = Profile.objects.get(user=request.user)
+        if level is not None:
+            profile.training_lvl = Level.objects.get(level_no=int(level)+1)
         profile.words += int(wpm)
         profile.characters += int(cpm)
         profile.errors += int(errors)
