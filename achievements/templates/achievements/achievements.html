@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-text-teal">Achievements</h1>
+     <div class="tab">
+        <button class="tablinks" id="first"
+                onclick="openTab(event, 'myachievements', 'My Achievements', 'first')"
+                style="background-color: #e7e7e7;">My Achievements</button>
+        <button class="tablinks" id="second"
+                onclick="openTab(event, 'allachievements1', 'All Achievements', 'second')">All Achievements</button>
+     <h3 id="title" style="float: right">My achievements</h3>
+
+    </div>
+    <div id="myachievements" class="tabcontent" style="display: block">
+    {% if user.is_authenticated %}
+
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+
+                <tbody >
+    <tr>
+
+      <th>Achievement Name</th>
+      <th>Current Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Typing level</td>
+      <td>{{ typing_lvl }}</td>
+      <td><img src="/media/ranks/{{ typing_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Score level</td>
+      <td>{{ score_lvl }}</td>
+      <td><img src="/media/ranks/{{ score_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+    <tr>
+      <td>Races number level</td>
+      <td>{{ races_lvl }}</td>
+      <td><img src="/media/ranks/{{ races_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+      <tr>
+      <td>Accuracy level</td>
+      <td>{{ accuracy_lvl }}</td>
+      <td><img src="/media/ranks/{{ accuracy_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+                <tbody >
+
+            <tr>
+      <td>Ranks number level</td>
+      <td>{{ summary_lvl }}</td>
+      <td><img src="/media/ranks/{{ summary_lvl }}.png" style="width:20%" /></td>
+    </tr>
+                </tbody>
+
+  </table>
+        </div>
+        </div>
+        </div>
+        {% endif %}
+
+
+
+        <div id="allachievements1" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements2', 'All Achievements', 'second')">Typing level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+
+                {% for achievement in achievements %}
+                    {% if achievement.name == 'Typing level' %}
+                    <tr>
+      <td>{{ achievement.description }}</td>
+      <td>{{ achievement.rank }}</td>
+      <td><img src="{{ achievement.image }}" style="width:35%" /></td>
+    </tr>
+                    {% endif %}
+                {% endfor %}
+
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+
+<div id="allachievements2" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements3', 'All Achievements', 'second')">Score level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+                {% for achievement in achievements %}
+                    {% if achievement.name == 'Score level' %}
+                    <tr>
+      <td>{{ achievement.description }}</td>
+      <td>{{ achievement.rank }}</td>
+      <td><img src="{{ achievement.image }}" style="width:55%" /></td>
+    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements3" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements4', 'All Achievements', 'second')">Races number level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+                {% for achievement in achievements %}
+                    {% if achievement.name == 'Races number level' %}
+                    <tr>
+      <td>{{ achievement.description }}</td>
+      <td>{{ achievement.rank }}</td>
+      <td><img src="{{ achievement.image }}" style="width:80%" /></td>
+    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements4" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements5', 'All Achievements', 'second')">Accuracy level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+                {% for achievement in achievements %}
+                    {% if achievement.name == 'Accuracy level' %}
+                    <tr>
+      <td>{{ achievement.description }}</td>
+      <td>{{ achievement.rank }}</td>
+      <td><img src="{{ achievement.image }}" style="width:80%" /></td>
+    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+    <div id="allachievements5" class="tabcontent">
+        <div class="media-body">
+ <div class="panel panel-default">
+<table class="table table-striped table-hover">
+     <thead>
+                  <tr>
+                      <th>Achievement Name</th>
+
+                      <th><button type="button" class="btn btn-primary"
+                                  onclick="openTab(event, 'allachievements1', 'All Achievements', 'second')">Ranks number level</button></th>
+
+                    </tr>
+                  </thead>
+
+                <tbody >
+    <tr>
+
+      <th>Description</th>
+      <th>Rank Name</th>
+      <th>Rank</th>
+
+    </tr>
+
+
+                </tbody>
+                <tbody >
+                {% for achievement in achievements %}
+                    {% if achievement.name == 'Ranks number level' %}
+                    <tr>
+      <td>{{ achievement.description }}</td>
+      <td>{{ achievement.rank }}</td>
+      <td><img src="{{ achievement.image }}" style="width:100%" /></td>
+    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+     <div class="panel panel-default">
+<table class="table table-striped table-hover">
+
+      <tr>
+
+      <th><img src="/media/ranks/Beginner.png" style="width:25%" /><small>Beginner</small></th>
+      <th><img src="/media/ranks/Intermediate.png" style="width:20%" /> <small>Intermediate </small></th>
+      <th><img src="/media/ranks/Average.png" style="width:25%" /> <small>Average</small></th>
+        <th><img src="/media/ranks/Pro.png" style="width:30%" /> <small>Pro</small></th>
+      <th><img src="/media/ranks/Typemaster.png" style="width:20%" /> <small>Typemaster</small></th>
+      <th><img src="/media/ranks/Megaracer.png" style="width:20%" /> <small>Megaracer</small></th>
+    </tr>
+<tbody>
+      <tr>
+
+      <td>10 PTS</td>
+      <td>20 PTS </td>
+      <td>30 PTS</td>
+          <td>40 PTS</td>
+      <td>50 PTS</td>
+      <td>60 PTS</td>
+    </tr>
+
+</tbody>
+</div>
+</table>
+
+  </table>
+        </div>
+        </div>
+        </div>
+
+        <script>
+        function openTab(evt, rankingNames, title, tabId) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].style.backgroundColor = "#fafafa";
+            }
+            document.getElementById(rankingNames).style.display = "block";
+            document.getElementById('title').innerText = title;
+            document.getElementById(tabId).style.backgroundColor = "#e7e7e7";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+{% endblock %}

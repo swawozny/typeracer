@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="w3-text-teal">TypeRacer</h1>
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="header">
+              <div class="wpm">
+                <div class="header_text">WPM</div>
+                <div class="curr_wpm">100</div>
+              </div>
+              <div class="cpm">
+                <div class="header_text">CPM</div>
+                <div class="curr_cpm">100</div>
+              </div>
+              <div class="errors">
+                <div class="header_text">Errors</div>
+                <div class="curr_errors">0</div>
+              </div>
+              <div class="timer">
+                <div class="header_text">Time</div>
+                <div class="curr_time">60s</div>
+              </div>
+              <div class="accuracy">
+                <div class="header_text">% Accuracy</div>
+                <div class="curr_accuracy">100</div>
+              </div>
+            </div>
+            <div class="quote">
+              Click on the area below to start the game.
+            </div>
+            {% if user.is_authenticated %}
+                <label for="input_online"></label>
+                <input
+                        type="text"
+                        class="input_area"
+                        id="input_online"
+                        placeholder="start typing here..."
+                        oninput="processCurrentText()"
+                        onfocus="startGame('online')"
+                >
+            {% else %}
+                <label for="input_offline"></label>
+                <input
+                        type="text"
+                        class="input_area"
+                        id="input_offline"
+                        placeholder="start typing here..."
+                        oninput="processCurrentText()"
+                        onfocus="startGame('offline')"
+                >
+            {% endif %}
+            <button class="restart_btn"
+              ondblclick="resetValues()">
+              Restart
+            </button>
+        </div>
+    </article>
+
+    <!-- link the JavaScript file here -->
+    <script>
+        function getText() {
+            return [
+                "Push yourself, because no one else is going to do it for you",
+                "Failure is the condiment that gives success its flavor.",
+                "Wake up with determination. Go to bed with satisfaction.",
+                "It's going to be hard, but hard does not mean impossible.",
+                "Learning never exhausts the mind.",
+                "The only way to do great work is to love what you do."
+            ];
+        }
+
+        function getTime() {
+            return 10;
+        }
+    </script>
+    <script src="../../../styles/game.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <h1>Add news</h1>
+        {% if user.is_authenticated %}
+            <form method="POST" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy}}
+                <input type="submit" name ="submit">
+            </form>
+        {% else %}
+            <small class="text-muted">
+                <a class="ml-2" href="/login">Log in</a>
+            </small>
+        {% endif %}
+    </div>
+{% endblock %}
