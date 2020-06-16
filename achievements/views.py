@@ -11,6 +11,7 @@ def achievements_list(request):
     races_lvl = None
     accuracy_lvl = None
     summary_lvl = None
+    achievements = None
 
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
